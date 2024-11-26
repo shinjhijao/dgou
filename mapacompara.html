@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+		<!-- bootstrap enlace -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<!-- leaflet css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+		<!-- leyenda -->
+	<link rel="stylesheet" href="mapaextra/cssnuevo/L.Control.HtmlLegend.css" />
+		<!-- mensura -->
+        <link rel="stylesheet" href="mapaextra/cssnuevo/leaflet-measure.css">
+  		
+        <style>
+        .mapa {
+            width: 700px;
+            height: 627px;
+            border-color: black;
+            border-style: solid;
+            border: 2px;
+            margin-left: 40px;
+
+        }
+
+        .mapas {
+
+            width: 100%;
+            height: 650px;
+            display: flex;
+        }
+
+        #location {
+            width: 400px;
+            background-color: #469ca62d;
+            color: black;
+            border-radius: 4px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body >
+
+
+
+    
+        <script src="mapaextra/jsnuevo/leaflet.js"></script>
+		<script src="mapaextra/jsnuevo/L.Control.HtmlLegend.js"></script>
+        <script src="mapaextra/jsnuevo/leaflet-measure.js"></script>
+<h2 style="text-align: center; padding: 2%;"><b>COMPARACIÓN DE CIUDADES</b></h2>
+    
+        <div style="display: flex;">
+        <div id="select-location1" style="margin-left: 150px;">
+            <select name="location" id="location">
+                <option value="'1">Seleccione un Municipio</option>
+                <option value="-16.60164,-68.159673">Achocalla</option>
+                <option value="-15.894477,-63.185564">Ascencion de Guarayos</option>
+                <option value="-22.732072,-64.334176">Bermejo</option>
+                <option value="-20.035174,-63.525652">Camiri</option>
+                <option value="-15.835217,-67.562606">Caranavi</option>
+                <option value="-18.899659,-66.77019">Challapata</option>
+                <option value="-11.03244,-68.775956">Cobija</option>
+                <option value="-17.423411,-66.168136">Cochabamba</option>
+                <option value="-17.387295,-66.231658">Colcapirhua</option>
+                <option value="-17.75287,-62.99684">Cotoca</option>
+                <option value="-16.528969,-68.215555">El Alto</option>
+                <option value="-17.994674,-63.384267">El Torno</option>
+                <option value="-10.825405,-65.355711">Guayaramerin</option>
+                <option value="-18.28665,-66.840289">Huanuni</option>
+                <option value="-17.884356,-63.272045">La Guardia</option>
+                <option value="-18.424932,-66.571814">Llallagua</option>
+                <option value="-17.124324,-63.232745">Mineros</option>
+                <option value="-17.334955,-63.253771">Montero</option>
+                <option value="-16.51087,-68.103648">Nuestra Señora de La Paz</option>
+                <option value="-17.967557,-67.097707">Oruro</option>
+                <option value="-17.239151,-67.916977">Patacamaya</option>
+                <option value="-17.350731,-63.396762">Portachuelo</option>
+                <option value="-19.580308,-65.75587">Potosi</option>
+                <option value="-19.001905,-57.717222">Puerto Quijarro</option>
+                <option value="-18.971945,-57.801397">Puerto Suarez</option>
+                <option value="-17.546001,-65.838305">Punata</option>
+                <option value="-17.377637,-66.281307">Quillacollo</option>
+                <option value="-11.009012,-66.054163">Riberalta</option>
+                <option value="-18.333143,-59.755288">Robore</option>
+                <option value="-14.435843,-67.518123">Rurrenabaque</option>
+                <option value="-17.399613,-66.056922">Sacaba</option>
+                <option value="-14.861637,-66.745868">San Borja</option>
+                <option value="-14.996767,-65.639982">San Ignacio de Moxos</option>
+                <option value="-16.37785,-60.964151">San Ignacio de Velasco</option>
+                <option value="-17.847944,-60.7407">San Jose de Chiquitos</option>
+                <option value="-16.90676,-62.616692">San Julian</option>
+                <option value="-13.751017,-65.436486">Santa Ana del Yacuma</option>
+                <option value="-17.79351,-63.142748">Santa Cruz de la Sierra</option>
+                <option value="-17.45076,-66.350368">Sipe Sipe</option>
+                <option value="-19.032085,-65.270079">Sucre</option>
+                <option value="-21.544425,-64.723941">Tarija</option>
+                <option value="-17.342294,-66.219793">Tiquipaya</option>
+                <option value="-14.826496,-64.898647">Trinidad</option>
+                <option value="-21.442433,-65.720112">Tupiza</option>
+                <option value="-20.460784,-66.825438">Uyuni</option>
+                <option value="-18.488257,-64.104817">Vallegrande</option>
+                <option value="-16.605978,-68.25619">Viacha</option>
+                <option value="-21.263962,-63.465963">Villamontes</option>
+                <option value="-17.387375,-66.32559">Vinto</option>
+                <option value="-17.581176,-63.16122">Warnes</option>
+                <option value="-22.010459,-63.677025">Yacuiba</option>
+                <option value="-17.400741,-63.908614">Yapacani</option>
+    
+                
+            </select>
+        
+        </div>
+
+        <div id="select-location2" style="margin-left: 350px;">
+            <select name="location" id="location">
+                <option value="'1">Seleccione un Municipio</option>
+                <option value="-16.60164,-68.159673">Achocalla</option>
+                <option value="-15.894477,-63.185564">Ascencion de Guarayos</option>
+                <option value="-22.732072,-64.334176">Bermejo</option>
+                <option value="-20.035174,-63.525652">Camiri</option>
+                <option value="-15.835217,-67.562606">Caranavi</option>
+                <option value="-18.899659,-66.77019">Challapata</option>
+                <option value="-11.03244,-68.775956">Cobija</option>
+                <option value="-17.423411,-66.168136">Cochabamba</option>
+                <option value="-17.387295,-66.231658">Colcapirhua</option>
+                <option value="-17.75287,-62.99684">Cotoca</option>
+                <option value="-16.528969,-68.215555">El Alto</option>
+                <option value="-17.994674,-63.384267">El Torno</option>
+                <option value="-10.825405,-65.355711">Guayaramerin</option>
+                <option value="-18.28665,-66.840289">Huanuni</option>
+                <option value="-17.884356,-63.272045">La Guardia</option>
+                <option value="-18.424932,-66.571814">Llallagua</option>
+                <option value="-17.124324,-63.232745">Mineros</option>
+                <option value="-17.334955,-63.253771">Montero</option>
+                <option value="-16.51087,-68.103648">Nuestra Señora de La Paz</option>
+                <option value="-17.967557,-67.097707">Oruro</option>
+                <option value="-17.239151,-67.916977">Patacamaya</option>
+                <option value="-17.350731,-63.396762">Portachuelo</option>
+                <option value="-19.580308,-65.75587">Potosi</option>
+                <option value="-19.001905,-57.717222">Puerto Quijarro</option>
+                <option value="-18.971945,-57.801397">Puerto Suarez</option>
+                <option value="-17.546001,-65.838305">Punata</option>
+                <option value="-17.377637,-66.281307">Quillacollo</option>
+                <option value="-11.009012,-66.054163">Riberalta</option>
+                <option value="-18.333143,-59.755288">Robore</option>
+                <option value="-14.435843,-67.518123">Rurrenabaque</option>
+                <option value="-17.399613,-66.056922">Sacaba</option>
+                <option value="-14.861637,-66.745868">San Borja</option>
+                <option value="-14.996767,-65.639982">San Ignacio de Moxos</option>
+                <option value="-16.37785,-60.964151">San Ignacio de Velasco</option>
+                <option value="-17.847944,-60.7407">San Jose de Chiquitos</option>
+                <option value="-16.90676,-62.616692">San Julian</option>
+                <option value="-13.751017,-65.436486">Santa Ana del Yacuma</option>
+                <option value="-17.79351,-63.142748">Santa Cruz de la Sierra</option>
+                <option value="-17.45076,-66.350368">Sipe Sipe</option>
+                <option value="-19.032085,-65.270079">Sucre</option>
+                <option value="-21.544425,-64.723941">Tarija</option>
+                <option value="-17.342294,-66.219793">Tiquipaya</option>
+                <option value="-14.826496,-64.898647">Trinidad</option>
+                <option value="-21.442433,-65.720112">Tupiza</option>
+                <option value="-20.460784,-66.825438">Uyuni</option>
+                <option value="-18.488257,-64.104817">Vallegrande</option>
+                <option value="-16.605978,-68.25619">Viacha</option>
+                <option value="-21.263962,-63.465963">Villamontes</option>
+                <option value="-17.387375,-66.32559">Vinto</option>
+                <option value="-17.581176,-63.16122">Warnes</option>
+                <option value="-22.010459,-63.677025">Yacuiba</option>
+                <option value="-17.400741,-63.908614">Yapacani</option>
+    
+                
+            </select>
+        </div>
+
+        </div>
+        <br>
+
+        <div class="mapas">
+            <div id="map" class="mapa"></div>
+            <div id="map2" class="mapa"></div>
+        </div>
+
+
+
+<script>
+//mapa 1
+		
+let map = L.map('map').setView([-16.2588034,-62.9609351], 6);
+        
+let Imagen = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map);
+let OpenSMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+   ).addTo(map);
+			
+
+// para la mensura
+	
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0].innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        
+// mapas wms  http://geoserver.bayoex.com/geoserver/DGOU/wms?
+
+
+ let cuestionario = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "GOU:cuestionario",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+ let pobla = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:poblacion",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+
+ let estudio = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:anos_estudio",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+  let media = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:edad_media",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+  let nbi = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:pobrezanbi",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+  let demografia = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:t_d_demografia",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+  let economica = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:t_d_economica",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+  let participa = L.tileLayer.wms("http://geoserver.bayoex.com/geoserver/DGOU/wms?", {
+    layers: "DGOU:t_g_participacion",
+    interactive: false,
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.1',
+    
+  }).addTo(map);
+
+// grupo de capas 
+
+let baselayer = {
+//"Capas Base": {
+    "Imagen Satelital": Imagen,
+    "Open Street Map": OpenSMap    
+
+};
+
+let overlays = {
+
+//"Capas DGOU": {
+    "Resultado Cuestionario": cuestionario,
+	"Años de Estudio": estudio,
+    "Dencidad Poblacional": pobla,
+    "Tasa de Dependencia Demográfica": demografia,
+    "Tasa de Dependencia Económica": economica,
+    "Tasa Global de Participación": participa,
+    "% pobreza por NBI": nbi,
+    "Edad Promedio Poblacional": media
+
+
+
+};
+
+L.control.layers(baselayer, overlays).addTo(map);
+
+
+//leyenda
+
+var htmlLegend1 = L.control.htmllegend({
+        position: 'bottomright',
+        legends: [{
+            name: 'Cuestionario',
+            layer: cuestionario,
+            elements: [{
+				label: 'Ninguna Sección',
+				html: '',
+              
+                style: {
+                    'background-color': '#d8e5e7',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: '1 Sección',
+                html: '',
+                style: {
+                    'background-color': '#ffe74b',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: '2 Secciones',
+                html: '',
+                style: {
+                    'background-color': '#ff8447',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: '3 Secciones',
+                html: '',
+                style: {
+                    'background-color': '#a6d96a',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: '4 Secciones',
+                html: '',
+                style: {
+                    'background-color': '#1a9641',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }]
+        }],
+        collapseSimple: true,
+        detectStretched: true,
+        collapsedOnInit: true,
+        defaultOpacity: 0.7,
+        visibleIcon: 'icon icon-eye',
+        hiddenIcon: 'icon icon-eye-slash'
+    })
+    map.addControl(htmlLegend1)
+
+
+// segunda leyenda
+
+var htmlLegend2 = L.control.htmllegend({
+        position: 'bottomright',
+        legends: [{
+            name: 'Categorización de Ciudades',
+            layer: "",
+            elements: [{
+				label: 'Muy Alto',
+				html: '',
+              
+                style: {
+                    'background-color': '#d7191c',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: 'Alto',
+                html: '',
+                style: {
+                    'background-color': '#fdae61',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: 'Medio',
+                html: '',
+                style: {
+                    'background-color': '#ffffc0',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: 'Bajo',
+                html: '',
+                style: {
+                    'background-color': '#a6d96a',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }, {
+                label: 'Muy Bajo',
+                html: '',
+                style: {
+                    'background-color': '#1a9641',
+                    'width': '10px',
+                    'height': '10px'
+                }
+            }]
+        }],
+        collapseSimple: true,
+        detectStretched: true,
+        collapsedOnInit: true,
+        defaultOpacity: 0.7,
+        visibleIcon: 'icon icon-eye',
+        hiddenIcon: 'icon icon-eye-slash'
+    })
+    map.addControl(htmlLegend2)
+
+    // flyto ir al municiopio
+
+document.getElementById('select-location1').addEventListener('change', function(e){
+    let coords = e.target.value.split(",");
+    L.marker(coords).addTo(map)
+    map.flyTo(coords, 13);
+  });
+
+
+		
+//mensura final
+
+  bounds_group.addLayer(cuestionario);
+  map.addLayer(layer_Cuestionario_0);
+  setBounds();
+
+
+
+
+        </script>
+
+<script src="js/mapa2.js"></script>
+
+    </body>
+</html>

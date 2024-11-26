@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma DGOU</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+ 
+        #primero {
+            display: none;
+        }
+        #segundo {
+            display: none;
+        }
+    </style>
+  
+
+
+    
+</head>
+<body style="background: url(img/pexels-nikitapishchugin-29282317.jpg);padding-left: 10%;padding-right: 10%;">
+
+    <section style="background-color: rgb(255, 255, 255); padding: 20px;">
+        <div style="background: url(img/fondo.jpg); height: 80px; border-radius: 8px;">
+            <h1>DATOS ESTADISTICOS</h1>
+        </div>
+    </section>
+
+    <section style="background-color: rgb(255, 255, 255); padding: 20px;">
+ 
+        <div style="background-color: rgb(255, 255, 255);">
+                    
+            <li>
+                    <img style="height: 40px;" alt=""><b>SELECCIONE UN MUNICIPIO</b>
+                <ul>
+                    <li>
+                        <a href="#" onclick="mostraruno(); ocultardos(); ocultartres()">Gobierno Autónomo Municipal de Acasio</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrardos(); ocultaruno(); ocultartres()">Gobierno Autónomo Municipal de Montero</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrartres(); ocultardos(); ocultaruno()">Gobierno Autónomo Municipal de El Alto</a>
+                    </li>
+                </ul>
+            
+            </li>
+        </div>  
+    <div>
+        <div id="primero" class="uno">
+            <iframe width="100%" height="1500px" src="municipios/Acasio.html" frameborder="0"></iframe>
+        </div>
+        <div id="segundo" class="uno">
+            <iframe width="100%" height="1500px" src="municipios/Montero.html" frameborder="0"></iframe>
+        </div>
+        <div id="tercero" class="uno">
+            <iframe width="100%" height="1500px" src="municipios/ElAlto.html" frameborder="0"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        function mostraruno() {
+            document.getElementById("primero").style.display = "block";
+        }
+        function ocultaruno() {
+            document.getElementById("primero").style.display = "none";
+        }
+        
+        function mostrardos() {
+            document.getElementById("segundo").style.display = "block";
+        }
+        function ocultardos() {
+            document.getElementById("segundo").style.display = "none";
+        }
+    
+        function mostrartres() {
+            document.getElementById("tercero").style.display = "block";
+        }
+        function ocultartres() {
+            document.getElementById("tercero").style.display = "none";
+        }
+    
+    </script>
+    
+    </section>
+
+</body>
+</html>
