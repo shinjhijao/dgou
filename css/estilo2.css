@@ -1,0 +1,39 @@
+#segundo {
+    display: none;
+}
+#tercero {
+    display: none;
+}
+
+.munidatos {
+    list-style: none;
+
+}
+
+.munidatos ul li {
+    list-style: none;
+    background-color: rgb(110, 208, 208);
+    width: 400px;
+    border-radius: 5px;
+}
+
+.munidatos ul li a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    display: "";
+}
+
+.munidatos ul li:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.munidatos li a {
+    text-decoration: none;
+    color: black;
+    width: 400px;
+}
+
+.munidatos li a:hover > li {
+    display: block;
+}
